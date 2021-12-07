@@ -1,0 +1,42 @@
+import java.util.*;
+class QuaRoot
+{
+public static void main(String args[])
+{
+int a,b,c,res;
+float root1,root2,disc;
+System.out.println(&quot;enter the values of a ,b,c:\n&quot;);
+Scanner sc=new Scanner(System.in);
+a=sc.nextInt();
+b=sc.nextInt();
+c=sc.nextInt();
+disc=(b*b)-(4*a*c);
+if(disc&gt;0)
+res=1;
+else if(disc&lt;0)
+res=-1;
+else
+res=0;
+switch(res)
+{
+case 1:
+System.out.println(&quot;Root are real&quot;);
+root1=((-1*b)+(float)(Math.sqrt(disc)))/(2*a);
+root2=((-1*b)-(float)(Math.sqrt(disc)))/(2*a);
+System.out.println(&quot;roots1:&quot;+root1+&quot;\nroot2:&quot;+root2);
+break;
+case -1:
+System.out.println(&quot;roots are imaginary&quot;);
+disc=(-1)*disc;
+float r1=(-b)/(2*a);
+root1=((float)Math.sqrt(disc))/(2*a);
+System.out.println(&quot;roots are:&quot;+r1+&quot;+i&quot;+root1);
+System.out.println(r1+&quot;-i&quot;+root1);
+break;
+case 0:System.out.println(&quot;roots are equal&quot;);
+root1=root2=(-b)/(2*a);
+System.out.println(&quot;roots are:&quot;+root1+&quot; &quot;+root2);
+break;
+}
+}
+}
