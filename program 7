@@ -1,0 +1,41 @@
+import java.util.*;
+import java.lang.*;
+class thread implements Runnable
+{
+String name;
+long timex;
+int x;
+Thread t;
+thread(String threadname, long time, int x1)
+{
+name=threadname;
+timex=time; 
+x=x1;
+t=new Thread(this,name);
+t.start();
+}
+public void run()
+{
+try
+{
+for(long i=timex;i>0;i--){
+System.out.println(name);
+Thread.sleep(timex);
+}
+}
+catch(InterruptedException e)
+{
+System.out.println(name+"Interrupted");
+}
+}
+}
+class threading
+{
+public static void main(String args[])
+{
+new thread("{usn}", 2000, 2);
+new thread("{cse}", 3000, 10);
+new thread("{bmsce}", 4000, 10);
+new thread("{bangalore}", 5000, 10);
+}
+}
