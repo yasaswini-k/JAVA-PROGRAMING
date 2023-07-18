@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guessing Game</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+    
+    .game-container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1 {
+      color: #333333;
+      margin-top: 0;
+      text-shadow: 2px 2px #CCCCCC;
+    }
+    
+    p {
+      color: #555555;
+      margin-bottom: 10px;
+    }
+    
+    input[type="number"] {
+      padding: 10px;
+      width: 150px;
+      font-size: 16px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-shadow: 1px 1px #333333;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    #message {
+      color: #333333;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-shadow: 1px 1px #CCCCCC;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput" min="1" max="100">
+    <br><br>
+    <button onclick="checkGuess()">Submit</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    var randomNumber = Math.floor(Math.random() * 100) + 1;
+    var attempts = 0;
+
+    function checkGuess() {
+      var guess = parseInt(document.getElementById('guessInput').value);
+      attempts++;
+
+      var messageElement = document.getElementById('message');
+      if (guess === randomNumber) {
+        messageElement.textContent = 'Congratulations! You guessed the correct number in ' + attempts + ' attempts.';
+        disableInputAndButton();
+      } else if (guess < randomNumber) {
+        messageElement.textContent = 'Try a higher number.';
+      } else {
+        messageElement.textContent = 'Try a lower number.';
+      }
+    }
+
+    function disableInputAndButton() {
+      var input = document.getElementById('guessInput');
+      var button = document.querySelector('button');
+      input.disabled = true;
+      button.disabled = true;
+    }
+  </script>
+</body>
+</html>
